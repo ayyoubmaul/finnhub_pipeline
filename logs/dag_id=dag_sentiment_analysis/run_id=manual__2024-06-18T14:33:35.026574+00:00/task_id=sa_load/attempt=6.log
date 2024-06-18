@@ -1,0 +1,27 @@
+[2024-06-18T14:56:15.798+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=non-requeueable deps ti=<TaskInstance: dag_sentiment_analysis.sa_load manual__2024-06-18T14:33:35.026574+00:00 [queued]>
+[2024-06-18T14:56:15.804+0000] {taskinstance.py:1979} INFO - Dependencies all met for dep_context=requeueable deps ti=<TaskInstance: dag_sentiment_analysis.sa_load manual__2024-06-18T14:33:35.026574+00:00 [queued]>
+[2024-06-18T14:56:15.804+0000] {taskinstance.py:2193} INFO - Starting attempt 6 of 7
+[2024-06-18T14:56:15.813+0000] {taskinstance.py:2217} INFO - Executing <Task(PythonOperator): sa_load> on 2024-06-18 14:33:35.026574+00:00
+[2024-06-18T14:56:15.943+0000] {standard_task_runner.py:60} INFO - Started process 570 to run task
+[2024-06-18T14:56:15.964+0000] {standard_task_runner.py:87} INFO - Running: ['***', 'tasks', 'run', 'dag_sentiment_analysis', 'sa_load', 'manual__2024-06-18T14:33:35.026574+00:00', '--job-id', '11', '--raw', '--subdir', 'DAGS_FOLDER/dag_sentiment_analysis.py', '--cfg-path', '/tmp/tmp8otda_pe']
+[2024-06-18T14:56:15.978+0000] {standard_task_runner.py:88} INFO - Job 11: Subtask sa_load
+[2024-06-18T14:56:16.013+0000] {logging_mixin.py:188} WARNING - /home/***/.local/lib/python3.10/site-packages/***/settings.py:194 DeprecationWarning: The sql_alchemy_conn option in [core] has been moved to the sql_alchemy_conn option in [database] - the old setting has been used, but please update your config.
+[2024-06-18T14:56:16.079+0000] {task_command.py:423} INFO - Running <TaskInstance: dag_sentiment_analysis.sa_load manual__2024-06-18T14:33:35.026574+00:00 [running]> on host 2c28cab0d674
+[2024-06-18T14:56:16.272+0000] {taskinstance.py:2513} INFO - Exporting env vars: AIRFLOW_CTX_DAG_OWNER='de-team' AIRFLOW_CTX_DAG_ID='dag_sentiment_analysis' AIRFLOW_CTX_TASK_ID='sa_load' AIRFLOW_CTX_EXECUTION_DATE='2024-06-18T14:33:35.026574+00:00' AIRFLOW_CTX_TRY_NUMBER='6' AIRFLOW_CTX_DAG_RUN_ID='manual__2024-06-18T14:33:35.026574+00:00'
+[2024-06-18T14:56:16.274+0000] {taskinstance.py:2731} ERROR - Task failed with exception
+Traceback (most recent call last):
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 444, in _execute_task
+    result = _execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/models/taskinstance.py", line 414, in _execute_callable
+    return execute_callable(context=context, **execute_callable_kwargs)
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 200, in execute
+    return_value = self.execute_callable()
+  File "/home/airflow/.local/lib/python3.10/site-packages/airflow/operators/python.py", line 217, in execute_callable
+    return self.python_callable(*self.op_args, **self.op_kwargs)
+  File "/opt/airflow/plugins/sentiment_analysis_loader.py", line 7, in run
+    db = mongodb_loader.get("news", "finnhub_news")
+AttributeError: module 'mongodb_loader' has no attribute 'get'
+[2024-06-18T14:56:16.286+0000] {taskinstance.py:1149} INFO - Marking task as UP_FOR_RETRY. dag_id=dag_sentiment_analysis, task_id=sa_load, execution_date=20240618T143335, start_date=20240618T145615, end_date=20240618T145616
+[2024-06-18T14:56:16.298+0000] {standard_task_runner.py:107} ERROR - Failed to execute job 11 for task sa_load (module 'mongodb_loader' has no attribute 'get'; 570)
+[2024-06-18T14:56:16.333+0000] {local_task_job_runner.py:234} INFO - Task exited with return code 1
+[2024-06-18T14:56:16.358+0000] {taskinstance.py:3312} INFO - 0 downstream tasks scheduled from follow-on schedule check
