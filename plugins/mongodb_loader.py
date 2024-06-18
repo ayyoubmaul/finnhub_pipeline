@@ -17,7 +17,7 @@ def get_mongo_client(mongo_uri):
         return None
 
 def load(database, collection):
-    mongo_uri = "mongodb+srv://temp_user:temp_user123@learn-mongo.zsesjah.mongodb.net/?retryWrites=true&w=majority&appName=learn-mongo"
+    mongo_uri = "mongodb+srv://<your username>:<your password>@<your mongodb endpoint>"
     if not mongo_uri:
         print("MONGO_URI not set in environment variables")
 
@@ -29,8 +29,8 @@ def load(database, collection):
 
     return col
 
-def get(database, collection):
-    mongo_uri = "mongodb+srv://temp_user:temp_user123@learn-mongo.zsesjah.mongodb.net/?retryWrites=true&w=majority&appName=learn-mongo"
+def get_data(database, collection):
+    mongo_uri = "mongodb+srv://<your username>:<your password>@<your mongodb endpoint>"
     if not mongo_uri:
         print("MONGO_URI not set in environment variables")
 

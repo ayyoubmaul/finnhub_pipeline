@@ -4,7 +4,7 @@ from sentiment_analysis import SentimentAnalysis
 import postgres_loader
 
 def run():
-    db = mongodb_loader.get("news", "finnhub_news")
+    db = mongodb_loader.get_data("news", "finnhub_news")
 
     news = [x for x in db.finnhub_news.find()]
 
@@ -20,3 +20,5 @@ def run():
 
     print("Successfully loaded to Postgres")
 
+if __name__ == "__main__":
+    run()
